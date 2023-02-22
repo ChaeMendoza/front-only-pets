@@ -1,0 +1,54 @@
+* {
+  scroll-behavior: smooth;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  100% {
+    opacity: 0;
+  }
+  0% {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+.modal {
+  position: absolute;
+  float: left;
+  transform: translate(-50%, -50%);
+  box-shadow: var(--shadow-2), 0 0 0 100vw rgb(0 0 0 / 0.5);
+  color: #222;
+}
+
+.modal::backdrop {
+  background: rgb(0 0 0 / 0.5);
+  opacity: 0;
+}
+
+.modal[open] {
+  animation: slide-up 1000ms forwards, fade-in 500ms forwards;
+}
+
+.modal[closing] {
+  display: block;
+  pointer-events: none;
+  inset: 0;
+  animation: fade-out 500ms forwards;
+}
